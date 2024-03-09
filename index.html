@@ -1,0 +1,682 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://dpidetector.org/static/core/images/favicon.png" />
+  <title>DPIdetector — Мониторинг доступности VPN-протоколов</title>
+  <!-- Primary Meta Tags -->
+  <meta property="og:url" content="https://dpidetector.org/">
+  <meta property="og:title" content="DPI detector">
+  <meta property="og:description" content="DPI detector - это инструмент для исследования интернет цензуры, который позволяет отслеживать блокировку тех или иных протоколов и инструментов.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://dpidetector.org/static/core/images/preview.png">
+  <meta property="og:image:type" content="image/png">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+  <meta name="twitter:title" content="DPIdetector — Мониторинг доступности VPN-протоколов">
+  <meta name="twitter:description" content="DPI detector - это инструмент для исследования интернет цензуры, который позволяет отслеживать блокировку тех или иных протоколов и инструментов.">
+  <meta name="twitter:image" content="https://dpidetector.org/static/core/images/preview.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./files/core.css">
+  
+  <link href="https://dpidetector.org/static/core/css/map.css" rel="stylesheet">
+  <link href="https://dpidetector.org/static/core/css/datatables.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-main">
+
+
+
+<form action="/i18n/setlang/" method="POST" hidden id="localeForm">
+  <input type="hidden" name="csrfmiddlewaretoken" value="gsokaVKZpS3HFSkOHkaRrKZixyTfuMAnorY5haiYoe3pYstJuQ3eTF7rDgBRgIPt">
+  <input type="hidden" name="next" value="/"/>
+  
+    <input type="hidden" name="language" value="en">
+  
+</form>
+
+
+<header class="fixed w-full z-10">
+  <nav class="py-3.5 border-b border-color bg-main">
+
+    <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+      <a href="/ru/" class="flex items-center">
+        
+
+<img width="170"
+     height="auto"
+     src="https://dpidetector.org/static/core/images/logo_beta.svg"
+     class="mr-3 h-8 md:w-[13.75rem]" alt="DPI detector Logo"/>
+
+      </a>
+      <div class="gap-8 flex font-medium text-sm md:text-base ">
+        
+          <a href="/ru/signin/" class="font-color-main hover:opacity-80">
+            Войти
+          </a>
+        
+        <a href="https://t.me/dpidetector" target="_blank" class="font-color-main hover:opacity-80">
+          Поддержка
+        </a>
+        <a target="_blank" class="font-color-main hover:opacity-80 change-locale cursor-pointer">
+          English
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+
+
+  <section class="bg-main">
+    <div class="grid max-w-screen-xl px-4 pt-20 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12 lg:pt-28 pb-10 md:pb-14 ">
+      <div class="mr-auto place-self-center lg:col-span-7">
+        <h1
+          class="max-w-max mb-4 text-4xl md:text-5xl xl:text-7xl leading-none text-white uppercase tracking-tighter font-semibold">
+          Мониторинг доступности VPN-протоколов в России
+        </h1>
+      </div>
+      <div class="mt-0 lg:col-span-5 max-w-md text-base md:text-lg leading-6 md:leading-7 font-normal lg:pl-8">
+        <p class="text-white text-opacity-80">
+          DPIdetector - это инструмент для исследования интернет цензуры,
+            который позволяет отслеживать блокировку тех или иных протоколов.
+        </p>
+      </div>
+    </div>
+    <div class="max-w-screen-xl md:px-4 md:mx-auto ">
+      <img src="https://dpidetector.org/static/core/images/bg.png" class="w-full h-[23rem] object-cover"/>
+    </div>
+  </section>
+
+  <section>
+    <div
+      class="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-1 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
+      <div class="col-span-2 mb-8">
+        <div class="mb-10 flex flex-wrap">
+          <ul class="flex flex-wrap gap-3.5 text-sm pr-12 pb-3.5">
+            <li>
+              <input type="radio"
+                     id="globe"
+                     value="false"
+                     name="location"
+                     checked
+                     class="hidden peer server-location">
+              <label for="globe"
+                     class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                <div class="block">
+                  <div class="w-full">За рубеж</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <input type="radio"
+                     id="ru_based"
+                     value="true"
+                     name="location"
+                     class="hidden peer server-location">
+              <label for="ru_based"
+                     class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                <div class="block">
+                  <div class="w-full">В России</div>
+                </div>
+              </label>
+            </li>
+          </ul>
+
+          <ul class="flex flex-wrap gap-3.5 text-sm">
+            <li class="">
+              <input type="radio" id="all" value="all" name="protocol" class="hidden peer protocol" checked>
+              <label for="all"
+                     class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer  hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                <div class="block">
+                  <div class="w-full">Все протоколы</div>
+                </div>
+              </label>
+            </li>
+            
+              <li>
+                <input type="radio"
+                       id="amnezia-wireguard"
+                       value="amnezia-wireguard"
+                       name="protocol"
+                       class="hidden peer protocol">
+                <label for="amnezia-wireguard"
+                       class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer  hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                  <div class="block">
+                    <div class="w-full">Amnezia WireGuard</div>
+                  </div>
+                </label>
+              </li>
+            
+              <li>
+                <input type="radio"
+                       id="cloak"
+                       value="cloak"
+                       name="protocol"
+                       class="hidden peer protocol">
+                <label for="cloak"
+                       class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer  hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                  <div class="block">
+                    <div class="w-full">Cloak</div>
+                  </div>
+                </label>
+              </li>
+            
+              <li>
+                <input type="radio"
+                       id="openvpn"
+                       value="openvpn"
+                       name="protocol"
+                       class="hidden peer protocol">
+                <label for="openvpn"
+                       class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer  hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                  <div class="block">
+                    <div class="w-full">OpenVPN</div>
+                  </div>
+                </label>
+              </li>
+            
+              <li>
+                <input type="radio"
+                       id="openvpn-tlscrypt"
+                       value="openvpn-tlscrypt"
+                       name="protocol"
+                       class="hidden peer protocol">
+                <label for="openvpn-tlscrypt"
+                       class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer  hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                  <div class="block">
+                    <div class="w-full">OpenVPN+TLScrypt</div>
+                  </div>
+                </label>
+              </li>
+            
+              <li>
+                <input type="radio"
+                       id="shadowsocks"
+                       value="shadowsocks"
+                       name="protocol"
+                       class="hidden peer protocol">
+                <label for="shadowsocks"
+                       class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer  hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                  <div class="block">
+                    <div class="w-full">Shadowsocks</div>
+                  </div>
+                </label>
+              </li>
+            
+              <li>
+                <input type="radio"
+                       id="wireguard"
+                       value="wireguard"
+                       name="protocol"
+                       class="hidden peer protocol">
+                <label for="wireguard"
+                       class="inline-block py-1 px-2.5 border border-white bg-main text-white hover:opacity-80 items-center justify-between w-full cursor-pointer  hover:opacity-80 peer-checked:text-black peer-checked:bg-[#ffffff]">
+                  <div class="block">
+                    <div class="w-full">WireGuard</div>
+                  </div>
+                </label>
+              </li>
+            
+          </ul>
+          <input hidden type="hidden" id="selectedRegion" name="region" value="">
+        </div>
+
+        <div class="mt-6 z-0">
+          <div id="russia" class="map-russia" style="width: 1000px; height: 600px;"></div>
+        </div>
+
+        <div class="relative overflow-x-auto shadow-sm sm:rounded-lg mt-10" id="tableWrapper">
+          <table id="reports-table" class="w-full text-sm text-left rtl:text-right text-white text-opacity-80">
+            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+            <tr>
+              <th scope="col" class="px-6 py-3 border-b bg-secondary border-secondary">Регион</th>
+              <th scope="col"
+                  class="px-6 py-3 border-b bg-secondary border-secondary">Интернет провайдер</th>
+              <th scope="col" class="px-6 py-3 border-b bg-secondary border-secondary">Протокол</th>
+              <th scope="col" class="px-6 py-3 border-b bg-secondary border-secondary">Статус</th>
+            </tr>
+            </thead>
+            <tbody class="border-b bg-secondary border-secondary">
+            </tbody>
+          </table>
+
+          <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4">
+          <span class="text-sm font-normal text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
+          </span>
+            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+              <li>
+                <div id="previousPage"
+                     class="flex cursor-pointer items-center justify-center px-5 h-8 select-none bg-button text-white hover:opacity-80">
+                  Назад
+                </div>
+              </li>
+              <li>
+                <div id="nextPage"
+                     class="flex cursor-pointer items-center justify-center px-5 h-8 select-none bg-button text-white hover:opacity-80">
+                  Дальше
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-main">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl">
+
+      <div class="grid md:grid-cols-2 gap-4 md:gap-10 bg-secondary rounded-md px-10 py-14 mb-10">
+        <h1 class="text-white font-semibold text-3xl md:text-4xl tracking-tight">
+          Поднимите свой собственный диагностический узел — помогите проекту
+        </h1>
+        <div class="">
+          <p class="text-base md:text-lg font-normal text-white text-opacity-80 pb-8">
+            
+              Любой желающий может помочь нам в мониторинге доступности VPN-протоколов. Для этого вам нужно
+              запустить наши Docker контейнеры с диагностическим ПО на вашем рабочем или домашнем
+              компьютере.
+            
+          </p>
+          <a href="/ru/request-token/"
+             class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center bg-button-secondary hover:opacity-80 focus:ring-4 focus:ring-green-900 text-black">
+            Оставить заявку
+          </a>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="bg-secondary  rounded-md p-8 md:p-12 flex flex-col">
+          <h1 class="text-white font-semibold text-3xl md:text-4xl tracking-tight pb-4 md:pb-10">
+            Проект с открытым исходным кодом
+          </h1>
+          <p class="text-base md:text-lg font-normal text-white text-opacity-80 pb-10">
+            
+              DPIdetector — это Open Source проект. Вы можете посмотреть исходный код нашего проекта на GitHub и
+              убедиться в прозрачности нашей работы, а также внести свой вклад в развитие проекта.
+            
+          </p>
+          <a href="https://github.com/DPIdetector/dpidetector-node"
+             class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center bg-button hover:opacity-80 focus:ring-4 text-white mt-auto mr-auto">
+            Посмотреть на GitHub
+          </a>
+        </div>
+
+        <div class="bg-secondary  rounded-md p-8 md:p-12 flex flex-col">
+          <h1 class="text-white font-semibold text-3xl md:text-4xl tracking-tight pb-10">
+            Управляйте своими диагностическими узлами
+          </h1>
+          <p class="text-base md:text-lg font-normal text-white text-opacity-80 pb-4 md:pb-10">
+            
+              В панели управления вы сможете управлять своими диагностическими узлами, а также видеть статистику по
+              активности ваших узлов и доступности протоколов
+            
+          </p>
+          <a href="/ru/signin/"
+             class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center bg-button hover:opacity-80 focus:ring-4 text-white mt-auto mr-auto">
+            Перейти в панель управления
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  
+
+<footer class="rounded-lg shadow bg-main m-4">
+  <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <ul class="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 text-gray-400">
+        <li>
+          <a href="/ru/report-unavailability/" class="font-color-main hover:opacity-80 mr-3">
+            Сообщить о недоступности.
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script type="text/javascript" src="https://dpidetector.org/static/core/js/jquery-1.11.3.min.js"></script>
+<script type="application/javascript">
+  (() => {
+    const changeLocaleButtons = document.querySelectorAll('.change-locale')
+    for (const changeLocale of Array.from(changeLocaleButtons)) {
+      changeLocale.addEventListener('click', () => {
+        $('#localeForm').submit()
+      })
+    }
+  })()
+</script>
+
+
+  <script src="https://dpidetector.org/static/core/js/jquery.vmap.js?v=1710023974" type="text/javascript"></script>
+  <script src="https://dpidetector.org/static/core/js/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script src="https://dpidetector.org/static/core/js/jquery.vmap.russia.js?v=1710023974" type="text/javascript"></script>
+  <script src="https://dpidetector.org/static/core/js/regions.js?v=1710023974" type="text/javascript"></script>
+  <script type="text/javascript">
+    (async () => {
+      const $selectedRegion = $('#selectedRegion')
+
+      const getCheckedProtocol = () => {
+        return $(`input[name="protocol"]:checked`).val()
+      }
+
+      const getCheckedLocation = () => {
+        return $(`input[name="location"]:checked`).val()
+      }
+
+      const getSelectedRegion = () => {
+        return $selectedRegion.val()
+      }
+
+      class MapStore {
+        constructor() {
+          this.data = []
+        }
+
+        filterByRegion = (regionCode) => {
+          return this.data.filter((item) => item.region_code === regionCode);
+        }
+
+        async sync() {
+          const params = new URLSearchParams({
+            protocol: getCheckedProtocol(),
+            russia_based: getCheckedLocation()
+          })
+          const url = `/api/map/?${params.toString()}`
+
+          console.log('[getMapData]:', url)
+
+          const response = await fetch(url)
+          this.data = await response.json()
+          return this.data
+        }
+      }
+
+      const mapStore = new MapStore()
+      await mapStore.sync()
+
+      const getRegionData = (regionCode) => {
+        const checkedProtocol = getCheckedProtocol()
+        const result = mapStore.filterByRegion(regionCode)
+
+        if (checkedProtocol !== 'all') {
+          return result.filter((item) => {
+            return item.protocol === checkedProtocol
+          })
+        }
+        return result
+      }
+
+      let table = $('#reports-table');
+
+      table.dataTable({
+        dom: "Brtip",
+        info: false,
+        pagingType: 'simple',
+        pageLength: 13,
+        scrollY: false,
+        ordering: false,
+        data: [],
+        ajax: {
+          url: "/api/reports-list/",
+          dataSrc: ''
+        },
+        language: {
+          paginate: {
+            next: '&raquo;',
+            previous: "&laquo;",
+            first: '&laquo;',
+            last: '&raquo;'
+          },
+          emptyTable: 'Нет данных',
+          zeroRecords: 'Нет данных',
+        },
+        createdRow: function (row, data, dataIndex) {
+          $(row).addClass('hover:bg-[#14F32B] hover:text-[#060D01]')
+        },
+        columns: [
+          {
+            data: "node_meta",
+            render: ({ region_code }) => {
+              return transRegionName(region_code) || "—"
+            }
+          },
+          {
+            className: "px-6 py-4",
+            data: "node_meta",
+            render: (data) => data.isp || "—"
+          },
+          {
+            className: "px-6 py-4",
+            data: "protocol_name",
+          },
+          {
+            className: "px-6 py-4",
+            data: "available",
+            render: function (data) {
+              const value = data ? 'Доступен' : 'Недоступен'
+              const color = data ? 'green' : 'red'
+              return `
+              <span class="flex items-center text-sm font-medium me-3 hover:text-[#060D01]">
+                <span class="flex w-1.5 h-1.5 bg-${color}-600 rounded-full me-1.5 flex-shrink-0"></span>
+                ${value}
+              </span>`
+            }
+          },
+        ],
+      });
+
+      let tableApi = $(table).DataTable();
+
+      tableApi.on('preDraw', () => {
+        $('.dataTables_paginate').hide();
+      });
+
+      const nextPageButton = document.querySelector('#nextPage')
+      const previousPageButton = document.querySelector('#previousPage')
+
+      previousPageButton.addEventListener('click', (event) => {
+        tableApi.page('previous').draw('page');
+      })
+
+      nextPageButton.addEventListener('click', (event) => {
+        tableApi.page('next').draw('page');
+      })
+
+      tableApi.on('draw', () => {
+        const pageNumber = tableApi.page()
+        const maxPages = tableApi.page.info().pages - 1
+
+        // No more previous pages
+        if (pageNumber === 0) {
+          previousPageButton.classList.remove('hover:bg-gray-700', 'hover:text-white',)
+          previousPageButton.classList.add('hover:bg-gray-800', 'cursor-not-allowed', 'hover:text-gray-400')
+        } else {
+          previousPageButton.classList.add('hover:bg-gray-700', 'hover:text-white',)
+          previousPageButton.classList.remove('hover:bg-gray-800', 'cursor-not-allowed', 'hover:text-gray-400')
+        }
+
+        // No more next pages
+        if (pageNumber === maxPages) {
+          nextPageButton.classList.remove('hover:bg-gray-700', 'hover:text-white',)
+          nextPageButton.classList.add('hover:bg-gray-800', 'cursor-not-allowed', 'hover:text-gray-400')
+        } else {
+          nextPageButton.classList.add('hover:bg-gray-700', 'hover:text-white',)
+          nextPageButton.classList.remove('hover:bg-gray-800', 'cursor-not-allowed', 'hover:text-gray-400')
+        }
+      });
+
+      const updateTable = () => {
+        const params = new URLSearchParams({
+          protocol: getCheckedProtocol(),
+          region_code: getSelectedRegion(),
+          russia_based: getCheckedLocation()
+        })
+
+        for (const [key, value] of params.entries()) {
+          if (!value) {
+            params.delete(key);
+          }
+        }
+
+        const apiUrl = `/api/reports-list/?${params.toString()}`
+        console.log(`[updateTable] from: ${apiUrl} `)
+
+        fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+            tableApi.clear();
+            tableApi.rows.add(data);
+            tableApi.draw();
+            $("#tableWrapper").removeClass('hidden')
+          })
+      }
+
+      const calculateRatio = (a, b) => (a / (a + b)) * 100;
+      const determineColorByRatio = ({ available, unavailable }) => {
+        const ratio = calculateRatio(available, unavailable)
+        return ratio <= 50 ? '#EF0846' : ratio <= 90 ? '#EEE80B' : '#0AB826';
+      }
+
+      const mapConfig = {
+        color: '#8F928D',
+        selectedColor: '#4C4E4B',
+        backgroundColor: '#060D01',
+        borderColor: '#060D01',
+      }
+
+      const $russianFederationMap = $('#russia');
+
+      $russianFederationMap.vectorMap({
+        map: 'russia',
+        backgroundColor: mapConfig.backgroundColor,
+        borderColor: mapConfig.borderColor,
+        borderWidth: 1.5,
+        color: mapConfig.color,
+        hoverOpacity: 0.8,
+        enableZoom: true,
+        showTooltip: true,
+        selectedColor: mapConfig.selectedColor,
+        onRegionClick: (element, code, region) => {
+          $selectedRegion.val(code)
+          updateTable()
+        },
+        onRegionDeselect: (element, code, region) => {
+          $selectedRegion.val("")
+          updateTable()
+        },
+        onLabelShow: (event, label, code) => {
+          const regionName = label.text()
+          const regionData = getRegionData(code)
+
+          if (regionData.length === 0) {
+            label.html(`${regionName}: Нет данных`)
+            return
+          }
+
+          const subLabel = 'Доступность протоколов'
+          const items = regionData.map(({ protocol, available, unavailable }) => {
+            const color = determineColorByRatio({ available, unavailable });
+            const ratio = calculateRatio(available, unavailable);
+            return `
+            <li class="flex items-center">
+              <span class="flex w-1.5 h-1.5 me-2 bg-[${color}] rounded-full"></span>
+              ${protocol}: ${ratio.toFixed(2)}%
+            </li>`;
+          });
+
+          label.html(`
+              <h4 class="text-md font-medium text-white">${regionName}</h4>
+              <span class="mb-4 text-md font-sm text-white">${subLabel}:</span>
+              <ul class="max-w-md space-y-1 list-inside text-gray-400">
+                ${items.join('')}
+              </ul>
+            `)
+        },
+      });
+
+      const resetRegionColors = () => {
+        const defaultRegionColors = {}
+
+        getRegionCodes().forEach(regionCode => {
+          defaultRegionColors[regionCode] = mapConfig.color
+        });
+
+        $russianFederationMap.vectorMap(
+          'set',
+          'colors',
+          defaultRegionColors,
+        );
+      }
+
+      const highlightMapRegions = () => {
+        if (mapStore.data.length === 0) {
+          return resetRegionColors()
+        }
+
+        const highlightedRegions = {};
+
+        getRegionCodes().forEach((code) => {
+          const regionData = mapStore.data.filter(({ region_code }) => region_code === code)
+          const totalProtocolsCount = regionData.length
+
+          if (totalProtocolsCount === 0) {
+            highlightedRegions[code] = mapConfig.color
+            return
+          }
+
+          let unavailableProtocolsCount = 0
+
+          for (const { available, unavailable } of regionData) {
+            if (calculateRatio(available, unavailable) < 90) {
+              unavailableProtocolsCount += 1
+            }
+          }
+
+          highlightedRegions[code] = determineColorByRatio({
+            available: totalProtocolsCount - unavailableProtocolsCount,
+            unavailable: unavailableProtocolsCount,
+          })
+        })
+
+        $russianFederationMap.vectorMap('set', 'colors', highlightedRegions);
+      }
+
+      highlightMapRegions()
+
+      const handleCheckboxChange = async (event) => {
+        await mapStore.sync()
+        highlightMapRegions()
+        updateTable()
+      }
+
+      $('.protocol').on('change', handleCheckboxChange)
+      $('.server-location').on('click', handleCheckboxChange)
+
+    })()
+  </script>
+
+
+
+</body>
+</html>

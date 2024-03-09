@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Golos';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/GolosText-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Golos';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/GolosText-VariableFont_wght.ttf');
+}
+
+
+@font-face {
+    font-family: 'Golos';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/GolosText-VariableFont_wght.ttf');
+}
+
+body {
+    font-family: 'Golos';
+}
+
+.bg-main {
+    background-color: #060D01;
+}
+
+.bg-secondary {
+    background-color: #191A19;
+}
+
+
+.bg-button {
+    background-color: #ffffff1a;
+}
+
+.border-color {
+    border-color: #ffffff1a;
+}
+
+.border-gray-700,
+.bg-secondary {
+    border-color: #191A19 !important;
+}
+
+.font-color-main {
+    color: #14F32B;
+}
+
+.bg-button-secondary {
+    background-color: #14F32B !important;
+}
+
+.border-color-secondary {
+    border-color: #14F32B;
+}
+
